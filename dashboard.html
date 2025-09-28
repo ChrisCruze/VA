@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>AI VA Dashboard – VA Playbook</title>
+  <link rel="stylesheet" href="assets/checklist.css" />
+  <style>
+    body { max-width: 1100px; margin: 0 auto; }
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+    }
+    .card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 18px 50px -30px rgba(15, 23, 42, 0.4);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+    }
+    h2 {
+      color: var(--accent);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      padding: 0.7rem 0.8rem;
+      text-align: left;
+    }
+    th {
+      background: rgba(37, 99, 235, 0.08);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AI VA Dashboard Blueprint</h1>
+    <p>Visualize checklist throughput, time investment, and publishing outputs in a single interface.</p>
+  </header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="docs/system-overview.html">System Overview</a>
+    <a href="docs/airtable-model.html">Airtable Model</a>
+    <a href="checklists.html">Checklists</a>
+  </nav>
+  <section>
+    <h2>Header KPIs</h2>
+    <div class="kpi-grid">
+      <div class="card">
+        <h3>Runs In Progress</h3>
+        <p>Today&apos;s active runs vs. due count with SLA countdown per checklist.</p>
+      </div>
+      <div class="card">
+        <h3>Average Minutes / Checklist</h3>
+        <p>Rolling 7-day and 30-day averages derived from Run totals.</p>
+      </div>
+      <div class="card">
+        <h3>Output Velocity</h3>
+        <p>Artifacts produced per week segmented by checklist category.</p>
+      </div>
+      <div class="card">
+        <h3>Publish Rate</h3>
+        <p>Scheduled vs. published ratio with channel breakdown.</p>
+      </div>
+      <div class="card">
+        <h3>Quality Flags</h3>
+        <p>Readability targets, approval status, and QA exceptions aggregated from Runs.</p>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h2>Pipeline Board</h2>
+    <div class="card">
+      <p>Kanban grouping Runs by status (New → In Progress → Review → Done → Blocked) with checklist tags for prioritization.</p>
+    </div>
+  </section>
+  <section>
+    <h2>Time &amp; Load</h2>
+    <div class="card">
+      <p>Timesheet heatmap by person and project, plus totals for today and the current week.</p>
+      <p>Blend auto-calculated run durations with manual entries for QA or edits.</p>
+    </div>
+  </section>
+  <section>
+    <h2>Run Detail Panel</h2>
+    <div class="card">
+      <ul>
+        <li>Step timeline with timestamps, owner, duration, and status.</li>
+        <li>Linked artifacts preview (Docs, images, distribution drafts).</li>
+        <li>Current blocker notes and SLA countdown indicator.</li>
+      </ul>
+    </div>
+  </section>
+  <section>
+    <h2>Publishing Tracker</h2>
+    <div class="card">
+      <p>Calendar view showing scheduled posts with channel icons, state (queued/published/error), and quick links to URLs.</p>
+    </div>
+  </section>
+  <section>
+    <h2>SEO Performance Panel</h2>
+    <div class="card">
+      <p>List the last 10 posts with primary keywords, SERP rank placeholder, impressions, and click-through metrics.</p>
+    </div>
+  </section>
+  <section>
+    <h2>Search &amp; Filters</h2>
+    <div class="card">
+      <p>Global search by Input, Project, Tag, or Owner. Filters for checklist, status, channel, and SLA range.</p>
+    </div>
+  </section>
+  <section>
+    <h2>Key Formulas</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>Formula / Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Total Minutes</td>
+          <td><code>DATETIME_DIFF(End, Start, 'minutes')</code> aggregated per run.</td>
+        </tr>
+        <tr>
+          <td>Checklist Efficiency</td>
+          <td><code>Total Minutes / Completed Steps</code></td>
+        </tr>
+        <tr>
+          <td>Publish Rate</td>
+          <td><code>Count(Published) / Count(Scheduled)</code></td>
+        </tr>
+        <tr>
+          <td>Velocity</td>
+          <td>Artifacts per week (Airtable summary block or Looker Studio chart).</td>
+        </tr>
+        <tr>
+          <td>Quality Score</td>
+          <td>Weighted average of readability, approvals, and QA checklist completion.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <footer>
+    <a href="docs/system-overview.html">Back to documentation</a>
+  </footer>
+</body>
+</html>

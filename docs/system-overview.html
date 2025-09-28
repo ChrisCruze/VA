@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>System Overview – VA Playbook</title>
+  <link rel="stylesheet" href="../assets/checklist.css" />
+  <style>
+    body { max-width: 1100px; margin: 0 auto; }
+    pre {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 1rem 1.5rem;
+      border-radius: 0.75rem;
+      overflow-x: auto;
+      box-shadow: 0 12px 40px -24px rgba(15, 23, 42, 0.8);
+    }
+    nav a {
+      margin-right: 1rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    nav {
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>AI VA System Overview</h1>
+    <p>Understand how meetings flow from capture to publishing while maintaining visibility into progress and metrics.</p>
+  </header>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="system-overview.html">System Overview</a>
+    <a href="tools-agents.html">Tools &amp; Agents</a>
+    <a href="airtable-model.html">Airtable Model</a>
+  </nav>
+  <section>
+    <h2>System at a Glance</h2>
+    <p>The system is orchestrated as a sequence of interoperable services. Meetings and source material are captured, structured, and converted into publishable artifacts with audit trails.</p>
+    <pre>
+flowchart LR
+A[Meeting / Source] -->|audio/text| B[Otter]
+B -->|export summary + transcript| C[Airtable: Inputs]
+C -->|Zapier trigger (new record)| D[Agent Orchestrator (Opal or custom)]
+D -->|structured artifacts| E[Airtable: Artifacts]
+E -->|Zapier| F[Google Docs (drafts)]
+F -->|review→approved| G[CMS/Channels: LinkedIn, Medium, Substack, Blog]
+G -->|post URLs| H[Airtable: Distribution]
+D -->|metrics| I[Timesheet + Run Logs]
+I --> J[Dashboard (web app)]
+E --> J
+H --> J
+C --> J
+    </pre>
+    <p>Each block represents a managed integration. Airtable acts as the system of record for inputs, checklists, outputs, and distribution.</p>
+  </section>
+  <section>
+    <h2>End-to-End Workflow</h2>
+    <ol>
+      <li><strong>Capture:</strong> Otter ingests meeting recordings and shares transcripts/highlights.</li>
+      <li><strong>Normalize:</strong> Zapier stores the conversation into Airtable Inputs, tagging owners, projects, and timestamps.</li>
+      <li><strong>Orchestrate:</strong> Google Opal (or custom orchestrator) kicks off the appropriate checklist run, invoking specialized agents.</li>
+      <li><strong>Produce:</strong> Agents create structured artifacts (briefs, drafts, assets) that are stored in Airtable and Google Docs.</li>
+      <li><strong>Distribute:</strong> Approved content moves through distribution automations into CMS and social channels.</li>
+      <li><strong>Measure:</strong> Run metrics, time spent, and publishing data flow back into dashboards for visibility.</li>
+    </ol>
+  </section>
+  <section>
+    <h2>Resilience &amp; Monitoring</h2>
+    <ul>
+      <li><strong>Error handling:</strong> Failed steps set the Run status to <em>Blocked</em> and alert the assignee with context and logs.</li>
+      <li><strong>Version control:</strong> Prompts, artifacts, and runs carry version numbers to track evolution of the playbook.</li>
+      <li><strong>Security:</strong> API keys remain in secrets managers; transcripts are sanitized prior to external API calls.</li>
+      <li><strong>Governance:</strong> Human approval steps gate distribution to ensure compliance and final QA.</li>
+    </ul>
+  </section>
+  <footer>
+    <a href="../dashboard.html">View Dashboard Design</a>
+  </footer>
+</body>
+</html>

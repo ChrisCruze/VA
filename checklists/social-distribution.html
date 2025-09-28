@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Social Distribution Launch – VA Playbook</title>
+  <link rel="stylesheet" href="../assets/checklist.css" />
+</head>
+<body>
+  <header>
+    <h1>Social Distribution Launch</h1>
+    <p>Category: Distribution • SLA: 4h • Version: 1.0</p>
+  </header>
+  <section id="purpose">
+    <p>Transform approved artifacts into platform-native posts, schedule distribution, and capture performance signals.</p>
+  </section>
+  <section id="inputs">
+    <h2>Inputs Required</h2>
+    <ul>
+      <li>Approved artifact link (blog, brief, or asset)</li>
+      <li>Canonical URL + UTM parameters</li>
+      <li>Distribution channel list with posting windows</li>
+      <li>Prompt reference: <span class="badge">SOCIAL_SNIPPETS</span></li>
+      <li>Brand voice + compliance checklist</li>
+    </ul>
+  </section>
+  <section id="steps">
+    <h2>Steps</h2>
+    <div class="step" data-step id="step-1">
+      <div class="step-header">
+        <span class="step-title">1. Confirm artifact approval</span>
+        <span class="step-meta">Tool: Airtable Artifacts • SLA: 5 min</span>
+      </div>
+      <div class="acceptance">Artifact status = Approved, linked runs verified, and publishing notes captured.</div>
+    </div>
+    <div class="step" data-step id="step-2">
+      <div class="step-header">
+        <span class="step-title">2. Generate channel copy</span>
+        <span class="step-meta">Agent: OpenAI • Prompt: <span class="badge">SOCIAL_SNIPPETS</span> • SLA: 12 min</span>
+      </div>
+      <div class="acceptance">LinkedIn post, X thread, and newsletter blurb created with canonical URL placeholder.</div>
+    </div>
+    <div class="step" data-step id="step-3">
+      <div class="step-header">
+        <span class="step-title">3. Localize per channel</span>
+        <span class="step-meta">Tool: Manual edit + Grammarly • SLA: 15 min</span>
+      </div>
+      <div class="acceptance">Voice/tone check complete, hashtags reviewed, CTA consistent, compliance cleared.</div>
+    </div>
+    <div class="step" data-step id="step-4">
+      <div class="step-header">
+        <span class="step-title">4. Schedule posts</span>
+        <span class="step-meta">Tool: Buffer / Hypefury • SLA: 15 min</span>
+      </div>
+      <div class="acceptance">Posts scheduled with correct times, images, and shortened URLs; Distribution rows created per channel.</div>
+    </div>
+    <div class="step" data-step id="step-5">
+      <div class="step-header">
+        <span class="step-title">5. Update Airtable Distribution</span>
+        <span class="step-meta">Automation: Zapier sync • SLA: 5 min</span>
+      </div>
+      <div class="acceptance">Distribution table populated with scheduled timestamp, platform, and post URL placeholders.</div>
+    </div>
+    <div class="step" data-step id="step-6">
+      <div class="step-header">
+        <span class="step-title">6. Monitor publishing</span>
+        <span class="step-meta">Tool: Buffer analytics • SLA: 30 min (rolling)</span>
+      </div>
+      <div class="acceptance">Published time recorded, post URLs confirmed live, initial impressions/clicks logged after 24h.</div>
+    </div>
+    <div class="step" data-step id="step-7">
+      <div class="step-header">
+        <span class="step-title">7. Feedback loop</span>
+        <span class="step-meta">Tool: Airtable notes • SLA: 8 min</span>
+      </div>
+      <div class="acceptance">Key learnings, performance highlights, and follow-up experiments documented in Run.</div>
+    </div>
+    <div class="step" data-step id="step-8">
+      <div class="step-header">
+        <span class="step-title">8. Close checklist</span>
+        <span class="step-meta">Automation: Airtable update • SLA: 3 min</span>
+      </div>
+      <div class="acceptance">Run status set to <strong>Done</strong>, minutes logged, metrics forwarded to dashboard.</div>
+    </div>
+  </section>
+  <section id="outputs">
+    <h2>Outputs &amp; Quality Gates</h2>
+    <ul>
+      <li>Channel-specific copy deck (LinkedIn, X, newsletter)</li>
+      <li>Scheduled posts with assets attached</li>
+      <li>Distribution table entries with UTMs + tracking tags</li>
+      <li>Initial performance metrics logged for dashboard ingest</li>
+      <li>Run retrospective captured with optimization ideas</li>
+    </ul>
+  </section>
+  <footer><a href="https://airtable.com" target="_blank" rel="noopener">Open in Airtable</a></footer>
+  <script src="../assets/checklist.js"></script>
+</body>
+</html>

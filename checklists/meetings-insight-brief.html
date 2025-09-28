@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Meeting → Insight Brief – VA Playbook</title>
+  <link rel="stylesheet" href="../assets/checklist.css" />
+</head>
+<body>
+  <header>
+    <h1>Meeting → Insight Brief</h1>
+    <p>Category: Meetings • SLA: 6h • Version: 1.1</p>
+  </header>
+  <section id="purpose">
+    <p>Convert raw meeting conversations into executive-ready briefs with structured insights, action items, and distribution-ready content.</p>
+  </section>
+  <section id="inputs">
+    <h2>Inputs Required</h2>
+    <ul>
+      <li>Otter transcript link + exported highlights</li>
+      <li>Meeting metadata (title, date, participants)</li>
+      <li>Associated project / client tag</li>
+      <li>Checklist run owner in Airtable</li>
+      <li>Prompt references for MEETING_STRUCTURER &amp; EXEC_SUMMARY</li>
+    </ul>
+  </section>
+  <section id="steps">
+    <h2>Steps</h2>
+    <div class="step" data-step id="step-1">
+      <div class="step-header">
+        <span class="step-title">1. Ingest transcript</span>
+        <span class="step-meta">Tool: Zapier webhook from Otter • SLA: 5 min</span>
+      </div>
+      <div class="acceptance">Input row created in Airtable &ldquo;Inputs&rdquo; table with transcript, highlights, owner, and status set to <strong>New</strong>.</div>
+    </div>
+    <div class="step" data-step id="step-2">
+      <div class="step-header">
+        <span class="step-title">2. Structure meeting</span>
+        <span class="step-meta">Agent: OpenAI • Prompt: <span class="badge">MEETING_STRUCTURER</span> • SLA: 8 min</span>
+      </div>
+      <div class="acceptance">JSON payload saved to Artifacts with purpose, agenda, decisions, owners, risks, and follow-ups. Validation check passes.</div>
+    </div>
+    <div class="step" data-step id="step-3">
+      <div class="step-header">
+        <span class="step-title">3. Draft executive brief</span>
+        <span class="step-meta">Agent: OpenAI → Google Doc • Prompt: <span class="badge">EXEC_SUMMARY</span> • SLA: 15 min</span>
+      </div>
+      <div class="acceptance">Google Doc draft (200&ndash;300 words) linked to the Run with correct formatting, context, decisions, risks, and next steps.</div>
+    </div>
+    <div class="step" data-step id="step-4">
+      <div class="step-header">
+        <span class="step-title">4. Push action items</span>
+        <span class="step-meta">Tool: Zapier → Airtable Tasks • SLA: 10 min</span>
+      </div>
+      <div class="acceptance">All owners and due dates logged as individual task records and linked back to the originating Input.</div>
+    </div>
+    <div class="step" data-step id="step-5">
+      <div class="step-header">
+        <span class="step-title">5. Generate distribution summary</span>
+        <span class="step-meta">Agent: OpenAI → Buffer draft • Prompt: <span class="badge">SOCIAL_SNIPPETS</span> • SLA: 12 min</span>
+      </div>
+      <div class="acceptance">Optional LinkedIn-ready summary stored in Distribution table with placeholders for scheduling.</div>
+    </div>
+    <div class="step" data-step id="step-6">
+      <div class="step-header">
+        <span class="step-title">6. QA pass</span>
+        <span class="step-meta">Tools: Hemingway + Grammarly • SLA: 12 min</span>
+      </div>
+      <div class="acceptance">Readability score ≤ Grade 7 documented; grammar/spell check completed and notes captured in Run.</div>
+    </div>
+    <div class="step" data-step id="step-7">
+      <div class="step-header">
+        <span class="step-title">7. Close the run</span>
+        <span class="step-meta">Automation: Airtable update • SLA: 3 min</span>
+      </div>
+      <div class="acceptance">Run status updated to <strong>Done</strong>, total minutes calculated, and artefact links verified.</div>
+    </div>
+  </section>
+  <section id="outputs">
+    <h2>Outputs &amp; Quality Gates</h2>
+    <ul>
+      <li>Structured meeting JSON artifact (versioned, checksum optional)</li>
+      <li>Executive brief Google Doc with approval field ready</li>
+      <li>Action items synced to Airtable Tasks with owners/dates</li>
+      <li>Distribution summary draft queued (if requested)</li>
+      <li>QA checklist log with readability score and reviewer notes</li>
+    </ul>
+  </section>
+  <footer><a href="https://airtable.com" target="_blank" rel="noopener">Open in Airtable</a></footer>
+  <script src="../assets/checklist.js"></script>
+</body>
+</html>
