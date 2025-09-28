@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Blog Refinement &amp; SEO – VA Playbook</title>
+  <link rel="stylesheet" href="../assets/checklist.css" />
+</head>
+<body>
+  <header>
+    <h1>Blog Refinement &amp; SEO</h1>
+    <p>Category: Blogs • SLA: 12h • Version: 1.0</p>
+  </header>
+  <section id="purpose">
+    <p>Elevate draft blog content into polished, search-optimized publications supported by visuals and distribution assets.</p>
+  </section>
+  <section id="inputs">
+    <h2>Inputs Required</h2>
+    <ul>
+      <li>Source draft (Markdown, Google Doc, or notes)</li>
+      <li>Target topic, audience, and positioning notes</li>
+      <li>SEO_BRIEF and BLOG_DRAFTER prompt references</li>
+      <li>Brand voice guardrails (tone, CTA, product mentions)</li>
+      <li>Distribution channels + publishing credentials</li>
+    </ul>
+  </section>
+  <section id="steps">
+    <h2>Steps</h2>
+    <div class="step" data-step id="step-1">
+      <div class="step-header">
+        <span class="step-title">1. Intake draft into Inputs</span>
+        <span class="step-meta">Tool: Airtable import • SLA: 10 min</span>
+      </div>
+      <div class="acceptance">Input record created with source link, summary, and owner; status set to <strong>Parsed</strong>.</div>
+    </div>
+    <div class="step" data-step id="step-2">
+      <div class="step-header">
+        <span class="step-title">2. Generate outline</span>
+        <span class="step-meta">Agent: OpenAI • Prompt: <span class="badge">MEETING_STRUCTURER</span> adapted • SLA: 15 min</span>
+      </div>
+      <div class="acceptance">Outline artifact listing H2/H3 structure with word counts saved to Airtable Artifacts.</div>
+    </div>
+    <div class="step" data-step id="step-3">
+      <div class="step-header">
+        <span class="step-title">3. Build SEO brief</span>
+        <span class="step-meta">Agent: OpenAI • Prompt: <span class="badge">SEO_BRIEF</span> • SLA: 20 min</span>
+      </div>
+      <div class="acceptance">SEO brief JSON stored with keywords, SERP intent, H2/H3 list, competitor URLs, and metadata options.</div>
+    </div>
+    <div class="step" data-step id="step-4">
+      <div class="step-header">
+        <span class="step-title">4. Draft V1</span>
+        <span class="step-meta">Agent: OpenAI • Prompt: <span class="badge">BLOG_DRAFTER</span> • SLA: 40 min</span>
+      </div>
+      <div class="acceptance">Markdown or Google Doc draft with TL;DR, CTA, and internal link placeholders uploaded to Artifacts.</div>
+    </div>
+    <div class="step" data-step id="step-5">
+      <div class="step-header">
+        <span class="step-title">5. Generate imagery</span>
+        <span class="step-meta">Agent: DALL·E / Midjourney • SLA: 30 min</span>
+      </div>
+      <div class="acceptance">Cover + 1&ndash;3 inline images generated with alt text and stored with file links.</div>
+    </div>
+    <div class="step" data-step id="step-6">
+      <div class="step-header">
+        <span class="step-title">6. Readability &amp; polish</span>
+        <span class="step-meta">Tools: Hemingway, Grammarly • SLA: 25 min</span>
+      </div>
+      <div class="acceptance">Readability score ≤ Grade 8, grammar issues resolved, voice compliance noted in Run log.</div>
+    </div>
+    <div class="step" data-step id="step-7">
+      <div class="step-header">
+        <span class="step-title">7. Metadata &amp; canonical setup</span>
+        <span class="step-meta">Tool: Airtable + CMS • SLA: 15 min</span>
+      </div>
+      <div class="acceptance">Canonical URL, meta title/description, OG image, and schema fields populated in CMS draft.</div>
+    </div>
+    <div class="step" data-step id="step-8">
+      <div class="step-header">
+        <span class="step-title">8. Publish &amp; cross-post</span>
+        <span class="step-meta">Tool: CMS + Buffer • SLA: 25 min</span>
+      </div>
+      <div class="acceptance">Article published on canonical channel, cross-post plan executed, Distribution rows created with scheduled timestamps.</div>
+    </div>
+    <div class="step" data-step id="step-9">
+      <div class="step-header">
+        <span class="step-title">9. Track distribution</span>
+        <span class="step-meta">Tool: Airtable Distribution • SLA: 10 min</span>
+      </div>
+      <div class="acceptance">Live URLs, UTMs, and initial performance metrics (if available) captured for each channel.</div>
+    </div>
+    <div class="step" data-step id="step-10">
+      <div class="step-header">
+        <span class="step-title">10. Retrospective &amp; time log</span>
+        <span class="step-meta">Tool: Airtable Runs/Timesheets • SLA: 10 min</span>
+      </div>
+      <div class="acceptance">Run notes document blockers/improvements; time entries submitted and checklist status set to <strong>Done</strong>.</div>
+    </div>
+  </section>
+  <section id="outputs">
+    <h2>Outputs &amp; Quality Gates</h2>
+    <ul>
+      <li>SEO brief artifact with structured JSON and download link</li>
+      <li>Blog draft doc with version + owner metadata</li>
+      <li>Image pack with filenames, alt text, and storage links</li>
+      <li>CMS metadata tracker and publishing confirmation</li>
+      <li>Distribution tracker populated with URLs, UTMs, and schedule</li>
+    </ul>
+  </section>
+  <footer><a href="https://airtable.com" target="_blank" rel="noopener">Open in Airtable</a></footer>
+  <script src="../assets/checklist.js"></script>
+</body>
+</html>

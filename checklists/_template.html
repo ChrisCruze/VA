@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>{{CHECKLIST_NAME}} – VA Playbook</title>
+  <link rel="stylesheet" href="../assets/checklist.css" />
+</head>
+<body>
+  <header>
+    <h1>{{CHECKLIST_NAME}}</h1>
+    <p>Category: {{CATEGORY}} • SLA: {{SLA_HOURS}}h • Version: {{VERSION}}</p>
+  </header>
+  <section id="purpose">{{PURPOSE}}</section>
+  <section id="inputs">
+    <h2>Inputs Required</h2>
+    <ul><!-- render from schema --></ul>
+  </section>
+  <section id="steps">
+    <h2>Steps</h2>
+    <!-- ordered list with Tool, Prompt link, Done criteria -->
+  </section>
+  <section id="outputs">
+    <h2>Outputs &amp; Quality Gates</h2>
+    <ul><!-- artifacts + acceptance criteria --></ul>
+  </section>
+  <footer><a href="{{AIRTABLE_CHECKLIST_URL}}">Open in Airtable</a></footer>
+  <script src="../assets/checklist.js"></script>
+</body>
+</html>

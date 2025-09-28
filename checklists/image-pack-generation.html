@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Image Pack Generation – VA Playbook</title>
+  <link rel="stylesheet" href="../assets/checklist.css" />
+</head>
+<body>
+  <header>
+    <h1>Image Pack Generation</h1>
+    <p>Category: Creative • SLA: 6h • Version: 0.8</p>
+  </header>
+  <section id="purpose">
+    <p>Create on-brand image sets that support articles, briefs, and social posts with consistent styling and metadata.</p>
+  </section>
+  <section id="inputs">
+    <h2>Inputs Required</h2>
+    <ul>
+      <li>Content brief or checklist run reference</li>
+      <li>Brand guidelines (colors, typography, logo usage)</li>
+      <li>Image size &amp; format requirements per channel</li>
+      <li>Prompt references for Midjourney/DALL·E</li>
+      <li>Storage destination (Drive folder or CDN)</li>
+    </ul>
+  </section>
+  <section id="steps">
+    <h2>Steps</h2>
+    <div class="step" data-step id="step-1">
+      <div class="step-header">
+        <span class="step-title">1. Define image needs</span>
+        <span class="step-meta">Tool: Airtable brief • SLA: 15 min</span>
+      </div>
+      <div class="acceptance">Shot list created with use cases, dimensions, style notes, and approval owner.</div>
+    </div>
+    <div class="step" data-step id="step-2">
+      <div class="step-header">
+        <span class="step-title">2. Generate concepts</span>
+        <span class="step-meta">Agent: Midjourney/DALL·E • SLA: 45 min</span>
+      </div>
+      <div class="acceptance">At least three concept variants per use case exported with prompt + seed logged for reproducibility.</div>
+    </div>
+    <div class="step" data-step id="step-3">
+      <div class="step-header">
+        <span class="step-title">3. Curate &amp; edit</span>
+        <span class="step-meta">Tool: Figma/Photoshop • SLA: 40 min</span>
+      </div>
+      <div class="acceptance">Final selections color-corrected, cropped, and annotated; layered files saved for future tweaks.</div>
+    </div>
+    <div class="step" data-step id="step-4">
+      <div class="step-header">
+        <span class="step-title">4. Publish image pack</span>
+        <span class="step-meta">Tool: Google Drive / CDN • SLA: 20 min</span>
+      </div>
+      <div class="acceptance">Images exported to required sizes (web, social, cover); filenames follow convention and stored in Drive folder linked to Artifacts.</div>
+    </div>
+    <div class="step" data-step id="step-5">
+      <div class="step-header">
+        <span class="step-title">5. Document metadata</span>
+        <span class="step-meta">Tool: Airtable Artifacts • SLA: 15 min</span>
+      </div>
+      <div class="acceptance">Each image logged with alt text, usage rights, aspect ratio, and recommended captions.</div>
+    </div>
+    <div class="step" data-step id="step-6">
+      <div class="step-header">
+        <span class="step-title">6. Close checklist</span>
+        <span class="step-meta">Automation: Airtable update • SLA: 5 min</span>
+      </div>
+      <div class="acceptance">Run status set to <strong>Done</strong>, time logged, and pack shared with downstream checklists.</div>
+    </div>
+  </section>
+  <section id="outputs">
+    <h2>Outputs &amp; Quality Gates</h2>
+    <ul>
+      <li>Image pack folder with cover + supporting images</li>
+      <li>Prompt log and seeds for regeneration</li>
+      <li>Editable source files (Figma/PSD)</li>
+      <li>Metadata sheet (alt text, captions, usage rights)</li>
+      <li>Checklist retrospective entry for improvements</li>
+    </ul>
+  </section>
+  <footer><a href="https://airtable.com" target="_blank" rel="noopener">Open in Airtable</a></footer>
+  <script src="../assets/checklist.js"></script>
+</body>
+</html>

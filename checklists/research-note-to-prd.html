@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Research Note → PRD – VA Playbook</title>
+  <link rel="stylesheet" href="../assets/checklist.css" />
+</head>
+<body>
+  <header>
+    <h1>Research Note → Product Requirements Doc</h1>
+    <p>Category: Research • SLA: 10h • Version: 0.9</p>
+  </header>
+  <section id="purpose">
+    <p>Translate exploratory research notes into a validated PRD with user insights, requirements, and delivery milestones.</p>
+  </section>
+  <section id="inputs">
+    <h2>Inputs Required</h2>
+    <ul>
+      <li>Research notes (transcripts, highlights, or summary deck)</li>
+      <li>Target persona + problem statement</li>
+      <li>Existing product constraints or design principles</li>
+      <li>Prompt references: <span class="badge">MEETING_STRUCTURER</span>, <span class="badge">EXEC_SUMMARY</span></li>
+      <li>Approval routing list (PM, Eng lead, Design)</li>
+    </ul>
+  </section>
+  <section id="steps">
+    <h2>Steps</h2>
+    <div class="step" data-step id="step-1">
+      <div class="step-header">
+        <span class="step-title">1. Normalize research inputs</span>
+        <span class="step-meta">Tool: Airtable Inputs • SLA: 20 min</span>
+      </div>
+      <div class="acceptance">All source materials attached to Inputs record with tags, personas, and key dates captured.</div>
+    </div>
+    <div class="step" data-step id="step-2">
+      <div class="step-header">
+        <span class="step-title">2. Extract insights</span>
+        <span class="step-meta">Agent: OpenAI • Prompt: <span class="badge">MEETING_STRUCTURER</span> • SLA: 25 min</span>
+      </div>
+      <div class="acceptance">JSON artifact enumerating user goals, pain points, opportunity areas, and supporting quotes saved to Artifacts.</div>
+    </div>
+    <div class="step" data-step id="step-3">
+      <div class="step-header">
+        <span class="step-title">3. Draft PRD outline</span>
+        <span class="step-meta">Agent: OpenAI • SLA: 20 min</span>
+      </div>
+      <div class="acceptance">Outline includes problem statement, goals, success metrics, requirements, assumptions, and open questions.</div>
+    </div>
+    <div class="step" data-step id="step-4">
+      <div class="step-header">
+        <span class="step-title">4. Author PRD v1</span>
+        <span class="step-meta">Agent: OpenAI → Google Doc • SLA: 60 min</span>
+      </div>
+      <div class="acceptance">Draft PRD doc with sections fleshed out, requirement table, risks, and timeline placeholder.</div>
+    </div>
+    <div class="step" data-step id="step-5">
+      <div class="step-header">
+        <span class="step-title">5. Stakeholder review loop</span>
+        <span class="step-meta">Tool: Google Docs comments • SLA: 90 min</span>
+      </div>
+      <div class="acceptance">Feedback requested from PM, Eng, Design; comments resolved or documented with owners in Run Steps.</div>
+    </div>
+    <div class="step" data-step id="step-6">
+      <div class="step-header">
+        <span class="step-title">6. Version final PRD</span>
+        <span class="step-meta">Tool: Google Docs + Airtable Artifacts • SLA: 15 min</span>
+      </div>
+      <div class="acceptance">Version number incremented, change log recorded, final link stored with approval flag toggled.</div>
+    </div>
+    <div class="step" data-step id="step-7">
+      <div class="step-header">
+        <span class="step-title">7. Sync tasks &amp; roadmap</span>
+        <span class="step-meta">Tool: Zapier → Airtable/Project tool • SLA: 25 min</span>
+      </div>
+      <div class="acceptance">Requirements translated into tasks with owners/dates; roadmap updated and linked in Artifacts.</div>
+    </div>
+    <div class="step" data-step id="step-8">
+      <div class="step-header">
+        <span class="step-title">8. Close checklist</span>
+        <span class="step-meta">Automation: Airtable update • SLA: 5 min</span>
+      </div>
+      <div class="acceptance">Run marked <strong>Done</strong>, timesheet entries logged, summary shared with leadership.</div>
+    </div>
+  </section>
+  <section id="outputs">
+    <h2>Outputs &amp; Quality Gates</h2>
+    <ul>
+      <li>Insight JSON artifact with citations to source notes</li>
+      <li>PRD v1 Google Doc (comment-ready) + final approved version</li>
+      <li>Requirements-to-task mapping sheet</li>
+      <li>Risk register with owners and mitigation status</li>
+      <li>Roadmap link + milestone tracker aligned with PRD</li>
+    </ul>
+  </section>
+  <footer><a href="https://airtable.com" target="_blank" rel="noopener">Open in Airtable</a></footer>
+  <script src="../assets/checklist.js"></script>
+</body>
+</html>

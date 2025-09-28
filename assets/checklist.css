@@ -1,0 +1,148 @@
+:root {
+  --accent: #2563eb;
+  --accent-light: #dbeafe;
+  --bg: #f8fafc;
+  --text: #0f172a;
+  --muted: #475569;
+  --border: #cbd5f5;
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 2.5rem 1.5rem 4rem;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+header {
+  background: white;
+  padding: 2rem;
+  border-radius: 1.25rem;
+  box-shadow: 0 20px 60px -24px rgba(15, 23, 42, 0.25);
+  margin-bottom: 2rem;
+  border: 1px solid rgba(37, 99, 235, 0.1);
+}
+
+header h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+}
+
+header p {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+section {
+  background: white;
+  padding: 1.75rem;
+  border-radius: 1rem;
+  box-shadow: 0 10px 40px -24px rgba(15, 23, 42, 0.2);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  margin-bottom: 1.75rem;
+}
+
+section h2 {
+  margin-top: 0;
+  font-size: 1.3rem;
+  color: var(--accent);
+}
+
+section ul, section ol {
+  margin: 0;
+  padding-left: 1.15rem;
+}
+
+section li {
+  margin-bottom: 0.75rem;
+}
+
+.step {
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background: var(--accent-light);
+  border: 1px solid rgba(37, 99, 235, 0.15);
+  margin-bottom: 1rem;
+}
+
+.step-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.step-title {
+  font-weight: 600;
+}
+
+.step-meta {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.acceptance {
+  margin-top: 0.75rem;
+  padding: 0.85rem;
+  background: white;
+  border-left: 4px solid var(--accent);
+  border-radius: 0.5rem;
+  color: var(--muted);
+}
+
+footer {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+footer a:hover,
+footer a:focus {
+  text-decoration: underline;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+@media (min-width: 900px) {
+  body {
+    padding: 3rem 4rem 6rem;
+  }
+}
+[data-step] {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+[data-step].open {
+  transform: scale(1.01);
+}
+
+[data-step] .acceptance {
+  display: none;
+}
+
+[data-step].open .acceptance {
+  display: block;
+}

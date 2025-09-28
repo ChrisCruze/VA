@@ -1,1 +1,89 @@
-VA
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>AI VA Playbook</title>
+  <link rel="stylesheet" href="assets/checklist.css" />
+  <style>
+    body { max-width: 1100px; margin: 0 auto; }
+    .hero {
+      text-align: center;
+      padding: 2rem 1rem 3rem;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+    }
+    .hero p {
+      margin: 0 auto;
+      max-width: 720px;
+      color: var(--muted);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: white;
+      padding: 1.8rem;
+      border-radius: 1.25rem;
+      box-shadow: 0 22px 60px -32px rgba(15, 23, 42, 0.45);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+    }
+    .card h2 {
+      margin-top: 0;
+      color: var(--accent);
+    }
+    .card p {
+      color: var(--muted);
+    }
+    .card a {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .card a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <h1>AI Virtual Assistant Playbook</h1>
+    <p>A centralized guide for running AI-powered checklists, orchestrating automations, and tracking outcomes across meetings, content, and distribution.</p>
+  </header>
+  <section class="grid">
+    <article class="card">
+      <h2>System Overview</h2>
+      <p>See how Otter, Airtable, Opal, and publishing channels connect to deliver insights end-to-end.</p>
+      <a href="docs/system-overview.html">Explore the flow →</a>
+    </article>
+    <article class="card">
+      <h2>Tools &amp; Agents</h2>
+      <p>Dive into recommended stack, prompt library, and the agents powering each workflow.</p>
+      <a href="docs/tools-agents.html">Review the stack →</a>
+    </article>
+    <article class="card">
+      <h2>Airtable Model</h2>
+      <p>Understand the tables, fields, formulas, and JSON schemas that keep the system aligned.</p>
+      <a href="docs/airtable-model.html">Open the data model →</a>
+    </article>
+    <article class="card">
+      <h2>Checklist Library</h2>
+      <p>Access detailed step-by-step checklists for briefs, blogs, distribution, research, and creative.</p>
+      <a href="checklists.html">Launch checklists →</a>
+    </article>
+    <article class="card">
+      <h2>Dashboard Blueprint</h2>
+      <p>Monitor throughput, time spent, publishing velocity, and quality flags at a glance.</p>
+      <a href="dashboard.html">View dashboard →</a>
+    </article>
+  </section>
+  <footer style="text-align:center; margin-top:3rem; color:var(--muted);">
+    <p>Built for rapid iteration. Update prompts, automations, and SLAs as the AI VA evolves.</p>
+  </footer>
+</body>
+</html>

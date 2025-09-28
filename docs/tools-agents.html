@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Tools &amp; Agents – VA Playbook</title>
+  <link rel="stylesheet" href="../assets/checklist.css" />
+  <style>
+    body { max-width: 1100px; margin: 0 auto; }
+    dl {
+      display: grid;
+      grid-template-columns: minmax(200px, 280px) 1fr;
+      gap: 0.75rem 1.5rem;
+    }
+    dt {
+      font-weight: 700;
+      color: var(--accent);
+    }
+    dd {
+      margin: 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid rgba(15, 23, 42, 0.1);
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background: rgba(37, 99, 235, 0.08);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Tools, Agents &amp; Workflows</h1>
+    <p>Recommended stack and automations that bring the AI-powered VA to life.</p>
+  </header>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="system-overview.html">System Overview</a>
+    <a href="tools-agents.html">Tools &amp; Agents</a>
+    <a href="airtable-model.html">Airtable Model</a>
+  </nav>
+  <section>
+    <h2>Capture &amp; Transcription</h2>
+    <dl>
+      <dt>Otter</dt>
+      <dd>Primary source for meeting transcripts, highlights, speaker detection, and timestamps.</dd>
+      <dt>Google Meet / Zoom</dt>
+      <dd>Native recordings optionally routed to Otter for automatic ingestion.</dd>
+    </dl>
+  </section>
+  <section>
+    <h2>Orchestration</h2>
+    <dl>
+      <dt>Google Opal</dt>
+      <dd>Multi-step agentic runner coordinating prompts, tool use, and Airtable updates.</dd>
+      <dt>Zapier / n8n / Make</dt>
+      <dd>Event-driven glue that syncs Airtable, Docs, Calendars, and CMS workflows.</dd>
+      <dt>Python Microservice</dt>
+      <dd>Optional FastAPI service for custom webhooks, retries, or long-running tasks.</dd>
+    </dl>
+  </section>
+  <section>
+    <h2>Storage &amp; Tracking</h2>
+    <dl>
+      <dt>Airtable</dt>
+      <dd>Source of truth for Inputs, Checklists, Runs, Run Steps, Artifacts, Distribution, Prompts, and Timesheets.</dd>
+      <dt>Google Drive / Docs</dt>
+      <dd>Living drafts and collaboration surface for humans-in-the-loop.</dd>
+      <dt>MongoDB</dt>
+      <dd>Optional vector store for long-term retrieval across meeting history.</dd>
+    </dl>
+  </section>
+  <section>
+    <h2>AI Writing &amp; Editing</h2>
+    <dl>
+      <dt>OpenAI</dt>
+      <dd>Drafting, structuring, SEO ideation, and summaries using tuned prompt library.</dd>
+      <dt>Hemingway</dt>
+      <dd>Enforces readability targets for briefs and blog drafts.</dd>
+      <dt>Grammarly</dt>
+      <dd>Ensures tone consistency and final polish.</dd>
+      <dt>Midjourney / DALL·E</dt>
+      <dd>Generates supporting visuals with prompt discipline.</dd>
+      <dt>Surfer SEO / Clearscope</dt>
+      <dd>Optional keyword and SERP gap analysis for advanced optimization.</dd>
+    </dl>
+  </section>
+  <section>
+    <h2>Publishing &amp; Analytics</h2>
+    <dl>
+      <dt>Channels</dt>
+      <dd>LinkedIn, Medium, Substack, Ghost/Next.js blog, plus Buffer or Hypefury for scheduling.</dd>
+      <dt>Analytics</dt>
+      <dd>Airtable Interfaces for quick dashboards; Metabase or Looker Studio for deeper analysis.</dd>
+    </dl>
+  </section>
+  <section>
+    <h2>Prompt Library</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Prompt</th>
+          <th>Purpose</th>
+          <th>Primary Output</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>MEETING_STRUCTURER</td>
+          <td>Extract purpose, agenda, decisions, owners, risks from transcripts.</td>
+          <td>Structured JSON summary</td>
+        </tr>
+        <tr>
+          <td>EXEC_SUMMARY</td>
+          <td>Create 200–300 word executive brief with context, decisions, risks, and next steps.</td>
+          <td>Google Doc or Markdown brief</td>
+        </tr>
+        <tr>
+          <td>SEO_BRIEF</td>
+          <td>Compile keywords, SERP intent, headings, questions, and competitor references.</td>
+          <td>SEO brief JSON</td>
+        </tr>
+        <tr>
+          <td>BLOG_DRAFTER</td>
+          <td>Draft 1,200–1,800 word posts aligned to SEO brief with TL;DR and CTA.</td>
+          <td>Article draft</td>
+        </tr>
+        <tr>
+          <td>SOCIAL_SNIPPETS</td>
+          <td>Produce LinkedIn post, X thread, and newsletter blurb tied to canonical URL.</td>
+          <td>Channel-ready copy bundle</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <section>
+    <h2>Workflow Wiring</h2>
+    <ul>
+      <li><strong>Triggers:</strong> Otter conversations → Inputs, Inputs parsed → Opal job, Artifacts approved → Google Doc templates, Distribution queued → Buffer scheduling.</li>
+      <li><strong>Actions:</strong> Run agents with checklist context, persist run steps, upload artifacts, update statuses and timestamps.</li>
+      <li><strong>Error Handling:</strong> Failed steps flag runs as <em>Blocked</em>, store error context, and notify stakeholders via Slack or email.</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Example Agents</h2>
+    <ul>
+      <li><strong>Ingestion Agent:</strong> Validates Otter link, fetches transcript, and cleans noise.</li>
+      <li><strong>Structurer Agent:</strong> Applies MEETING_STRUCTURER to produce JSON insights.</li>
+      <li><strong>Summarizer Agent:</strong> Runs EXEC_SUMMARY and publishes to Google Doc.</li>
+      <li><strong>SEO Agent:</strong> Builds SEO_BRIEF and passes data to drafting agent.</li>
+      <li><strong>Drafting Agent:</strong> Uses BLOG_DRAFTER to produce long-form content with placeholders.</li>
+      <li><strong>Image Agent:</strong> Generates visual concepts and alt text.</li>
+      <li><strong>Distribution Agent:</strong> Prepares multi-channel copy with UTMs.</li>
+      <li><strong>Analytics Agent:</strong> Backfills metrics into Airtable for dashboards.</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Security &amp; Governance</h2>
+    <ul>
+      <li>Store API keys in Opal or a dedicated secrets manager, never inside Airtable fields.</li>
+      <li>Mask personally identifiable information before sending transcripts to third-party models.</li>
+      <li>Version prompts and attach prompt IDs plus versions to each artifact for traceability.</li>
+      <li>Require human approval before distribution to public channels.</li>
+    </ul>
+  </section>
+  <footer>
+    <a href="../dashboard.html">Explore Dashboard</a>
+  </footer>
+</body>
+</html>

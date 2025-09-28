@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Airtable Data Model – VA Playbook</title>
+  <link rel="stylesheet" href="../assets/checklist.css" />
+  <style>
+    body { max-width: 1100px; margin: 0 auto; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.5rem;
+    }
+    th, td {
+      border: 1px solid rgba(15, 23, 42, 0.1);
+      padding: 0.65rem 0.75rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: rgba(37, 99, 235, 0.08);
+    }
+    pre {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 1rem 1.25rem;
+      border-radius: 0.75rem;
+      overflow-x: auto;
+      box-shadow: 0 12px 40px -30px rgba(15, 23, 42, 0.7);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Airtable Data Model</h1>
+    <p>Blueprint for tables, key fields, and formulas powering the AI VA workflows.</p>
+  </header>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="system-overview.html">System Overview</a>
+    <a href="tools-agents.html">Tools &amp; Agents</a>
+    <a href="airtable-model.html">Airtable Model</a>
+  </nav>
+  <section>
+    <h2>Core Tables</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Table</th>
+          <th>Purpose</th>
+          <th>Key Fields</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Inputs</td>
+          <td>One row per meeting, note, or draft intake.</td>
+          <td>Input ID (PK), Source, Otter Link, Title, Owner, Project, Raw Transcript, Highlights, Status, Tags, Created At</td>
+        </tr>
+        <tr>
+          <td>Checklists</td>
+          <td>Defines reusable processes and links to rendered HTML pages.</td>
+          <td>Checklist ID, Name, Category, Steps (JSON), SLA (hrs), Default Owner, Version, HTML Path, Active?</td>
+        </tr>
+        <tr>
+          <td>Runs</td>
+          <td>Instance of a checklist tied to an input.</td>
+          <td>Run ID, Checklist ID, Input ID, Assignee, Start/End Time, Total Minutes, Step Count, Completed Steps, Status, Artifacts, Notes</td>
+        </tr>
+        <tr>
+          <td>Run Steps</td>
+          <td>Granular tracking for each step executed.</td>
+          <td>Run Step ID, Run ID, Step #, Name, Tool/Agent, Prompt Template, Inputs, Outputs, Duration, Status, Error, Reruns</td>
+        </tr>
+        <tr>
+          <td>Artifacts</td>
+          <td>Stores all deliverables produced across workflows.</td>
+          <td>Artifact ID, Type, Format, Storage Link, Version, Author, Approved?, Linked Runs, Hash/Checksum</td>
+        </tr>
+        <tr>
+          <td>Distribution</td>
+          <td>Manages publishing per channel.</td>
+          <td>Distribution ID, Artifact ID, Channel, Post Title, Post URL, Scheduled At, Published At, UTM, Status, Metrics</td>
+        </tr>
+        <tr>
+          <td>Prompts</td>
+          <td>Version-controlled prompt templates.</td>
+          <td>Prompt ID, Name, Purpose, Template, Inputs Required, Model/Params, Owner, Version, Last Updated</td>
+        </tr>
+        <tr>
+          <td>Timesheets</td>
+          <td>Manual time entries for VAs or reviewers.</td>
+          <td>Entry ID, Person, Run ID/Task, Start, End, Minutes, Notes</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <section>
+    <h2>Step JSON Template</h2>
+    <pre>
+[
+  {
+    "step": 1,
+    "name": "Ingest transcript from Otter",
+    "tool": "Zapier",
+    "inputs_required": ["otter_url"],
+    "prompt_ref": null,
+    "acceptance": "Input row created with transcript & highlights",
+    "sla_min": 5
+  }
+]
+    </pre>
+    <p>Store the JSON inside the <strong>Steps</strong> field for each checklist to enable automation rendering.</p>
+  </section>
+  <section>
+    <h2>Formulas &amp; KPIs</h2>
+    <ul>
+      <li><strong>Total Minutes:</strong> <code>DATETIME_DIFF(End, Start, 'minutes')</code></li>
+      <li><strong>Step On-Time?:</strong> <code>IF(Duration &lt;= SLA_step, "✅", "⚠️")</code></li>
+      <li><strong>Checklist Efficiency:</strong> <code>Total Minutes / Completed Steps</code></li>
+      <li><strong>Publish Rate:</strong> <code>Count(Published) / Count(Scheduled)</code></li>
+      <li><strong>Velocity:</strong> Rolling count of artifacts produced per week via Airtable summary or Looker Studio.</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Time &amp; Task Tracking</h2>
+    <p>Each run step logs start/end times, enabling automatic duration calculations. Zapier or Opal pushes durations into Run Steps, while Airtable rollups supply Run-level totals. Manual edits and reviews are captured in Timesheets for blended accuracy.</p>
+  </section>
+  <section>
+    <h2>Distribution Feedback Loop</h2>
+    <p>When Distribution status shifts to <em>Published</em>, Zapier updates metrics fields and posts links back into the Dashboard. Failed publications trigger <em>Error</em> status with Slack notifications for follow-up.</p>
+  </section>
+  <footer>
+    <a href="../dashboard.html">Dashboard Design</a>
+  </footer>
+</body>
+</html>
