@@ -2,88 +2,377 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>AI VA Playbook</title>
-  <link rel="stylesheet" href="assets/checklist.css" />
-  <style>
-    body { max-width: 1100px; margin: 0 auto; }
-    .hero {
-      text-align: center;
-      padding: 2rem 1rem 3rem;
-    }
-    .hero h1 {
-      font-size: 2.8rem;
-      margin-bottom: 0.5rem;
-    }
-    .hero p {
-      margin: 0 auto;
-      max-width: 720px;
-      color: var(--muted);
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-    }
-    .card {
-      background: white;
-      padding: 1.8rem;
-      border-radius: 1.25rem;
-      box-shadow: 0 22px 60px -32px rgba(15, 23, 42, 0.45);
-      border: 1px solid rgba(15, 23, 42, 0.08);
-    }
-    .card h2 {
-      margin-top: 0;
-      color: var(--accent);
-    }
-    .card p {
-      color: var(--muted);
-    }
-    .card a {
-      display: inline-block;
-      margin-top: 1rem;
-      font-weight: 600;
-      color: var(--accent);
-      text-decoration: none;
-    }
-    .card a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI VA Dashboard – Operating System for Clarity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/main.css" />
 </head>
 <body>
-  <header class="hero">
-    <h1>AI Virtual Assistant Playbook</h1>
-    <p>A centralized guide for running AI-powered checklists, orchestrating automations, and tracking outcomes across meetings, content, and distribution.</p>
+  <header class="site-header">
+    <nav class="top-nav" aria-label="Primary">
+      <a class="brand" href="#top">AI VA Dashboard</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-menu">Menu</button>
+      <ul id="primary-menu" class="nav-links">
+        <li><a href="#system">System</a></li>
+        <li><a href="#tools">Stack</a></li>
+        <li><a href="#data-model">Data Model</a></li>
+        <li><a href="#checklists">Checklists</a></li>
+        <li><a href="#dashboard">Dashboard</a></li>
+        <li><a href="#next-steps">Next Steps</a></li>
+      </ul>
+    </nav>
+    <section class="hero" id="top">
+      <p class="eyebrow">AI Virtual Assistant Control Center</p>
+      <h1>Clarity on every project, workflow, and deliverable in one dashboard.</h1>
+      <p class="lede">Run repeatable checklists, orchestrate multi-agent automations, and review outputs without losing context. This operating system connects Otter, Opal, Airtable, Google Workspace, and publishing channels so you always know what’s in motion and what shipped.</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#system">See the system flow</a>
+        <a class="button ghost" href="#next-steps">Launch plan</a>
+      </div>
+    </section>
   </header>
-  <section class="grid">
-    <article class="card">
-      <h2>System Overview</h2>
-      <p>See how Otter, Airtable, Opal, and publishing channels connect to deliver insights end-to-end.</p>
-      <a href="docs/system-overview.html">Explore the flow →</a>
-    </article>
-    <article class="card">
-      <h2>Tools &amp; Agents</h2>
-      <p>Dive into recommended stack, prompt library, and the agents powering each workflow.</p>
-      <a href="docs/tools-agents.html">Review the stack →</a>
-    </article>
-    <article class="card">
-      <h2>Airtable Model</h2>
-      <p>Understand the tables, fields, formulas, and JSON schemas that keep the system aligned.</p>
-      <a href="docs/airtable-model.html">Open the data model →</a>
-    </article>
-    <article class="card">
-      <h2>Checklist Library</h2>
-      <p>Access detailed step-by-step checklists for briefs, blogs, distribution, research, and creative.</p>
-      <a href="checklists.html">Launch checklists →</a>
-    </article>
-    <article class="card">
-      <h2>Dashboard Blueprint</h2>
-      <p>Monitor throughput, time spent, publishing velocity, and quality flags at a glance.</p>
-      <a href="dashboard.html">View dashboard →</a>
-    </article>
-  </section>
-  <footer style="text-align:center; margin-top:3rem; color:var(--muted);">
-    <p>Built for rapid iteration. Update prompts, automations, and SLAs as the AI VA evolves.</p>
+  <main>
+    <section class="panel panel-highlight" id="system">
+      <div class="section-heading">
+        <p class="eyebrow">System at a glance</p>
+        <h2>From raw conversations to published assets – every handoff mapped.</h2>
+        <p class="description">Trace how inputs move through Otter, Airtable, agent orchestration, and distribution. Metrics and artifacts feed the dashboard so you can audit progress and unblock work quickly.</p>
+      </div>
+      <figure class="system-diagram" aria-labelledby="system-caption">
+        <pre><code class="language-mermaid">flowchart LR
+A[Meeting / Source] -->|audio/text| B[Otter]
+B -->|export summary + transcript| C[Airtable: Inputs]
+C -->|Zapier trigger (new record)| D[Agent Orchestrator (Opal or custom)]
+D -->|structured artifacts| E[Airtable: Artifacts]
+E -->|Zapier| F[Google Docs (drafts)]
+F -->|review→approved| G[CMS/Channels: LinkedIn, Medium, Substack, Blog]
+G -->|post URLs| H[Airtable: Distribution]
+D -->|metrics| I[Timesheet + Run Logs]
+I --> J[Dashboard (web app)]
+E --> J
+H --> J
+C --> J</code></pre>
+        <figcaption id="system-caption">Automation flow that powers the AI VA dashboard.</figcaption>
+      </figure>
+    </section>
+
+    <section class="panel" id="tools">
+      <div class="section-heading">
+        <p class="eyebrow">Tools &amp; agents</p>
+        <h2>The recommended stack for capture, orchestration, and publishing.</h2>
+        <p class="description">Modular layers keep the signal high. Every tool has a defined job: capture truth, automate processing, produce artifacts, or publish outcomes.</p>
+      </div>
+      <div class="cards-grid three-col">
+        <article class="card">
+          <h3>Capture &amp; transcription</h3>
+          <ul>
+            <li><strong>Otter</strong> for meeting transcripts, highlights, and speakers.</li>
+            <li>Optional native recordings routed directly into Otter.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Orchestration</h3>
+          <ul>
+            <li><strong>Google Opal</strong> (or comparable) for multi-step agent execution.</li>
+            <li><strong>Zapier</strong> / n8n / Make as event-driven glue across Airtable, Docs, calendars, and CMS.</li>
+            <li><strong>FastAPI microservice</strong> for custom webhooks or long-running jobs.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Storage &amp; tracking</h3>
+          <ul>
+            <li><strong>Airtable</strong> as the project hub (Inputs, Artifacts, Distribution, Tasks, Time Logs).</li>
+            <li><strong>Google Drive &amp; Docs</strong> for living drafts.</li>
+            <li><strong>MongoDB</strong> (optional) for transcript retrieval and RAG.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>AI writing &amp; editing</h3>
+          <ul>
+            <li><strong>OpenAI</strong> for drafting, structuring, summaries, and titles.</li>
+            <li><strong>Hemingway</strong> + <strong>Grammarly</strong> for readability and tone checks.</li>
+            <li><strong>Midjourney / DALL·E</strong> for creative assets; <strong>Surfer SEO / Clearscope</strong> for search insights.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Publishing</h3>
+          <ul>
+            <li><strong>LinkedIn, Medium, Substack, Ghost</strong> as distribution channels.</li>
+            <li><strong>Buffer / Hypefury</strong> for cross-posting and scheduling.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Analytics</h3>
+          <ul>
+            <li><strong>Airtable Interfaces</strong> for quick views and monitoring.</li>
+            <li><strong>Metabase / Looker Studio</strong> (optional) for deeper analysis and reporting.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel panel-muted" id="data-model">
+      <div class="section-heading">
+        <p class="eyebrow">Airtable data model</p>
+        <h2>Tables that anchor every run, artifact, and distribution touchpoint.</h2>
+        <p class="description">Each table tracks a different slice of the workflow—from raw inputs to publishing metrics—so you can audit progress, ownership, and quality in seconds.</p>
+      </div>
+      <div class="cards-grid two-col">
+        <article class="card">
+          <header>
+            <h3>Inputs</h3>
+            <p class="tag">Source of truth for meetings &amp; notes</p>
+          </header>
+          <ul class="field-list">
+            <li>Input ID, Source, Otter Link, Title, Owner, Project</li>
+            <li>Raw Transcript, Highlights, Status, Tags, Created At</li>
+          </ul>
+        </article>
+        <article class="card">
+          <header>
+            <h3>Checklists</h3>
+            <p class="tag">Structured playbooks</p>
+          </header>
+          <ul class="field-list">
+            <li>Checklist ID, Name, Category, Steps (JSON)</li>
+            <li>SLA (hrs), Default Owner, Version, HTML Path, Active?</li>
+          </ul>
+        </article>
+        <article class="card">
+          <header>
+            <h3>Runs &amp; Run Steps</h3>
+            <p class="tag">Execution telemetry</p>
+          </header>
+          <ul class="field-list">
+            <li>Run ID, Checklist ID, Input ID, Assignee, Status</li>
+            <li>Start/End Time, Total Minutes, Step Count, Artifacts</li>
+            <li>Run Steps include tool, prompt reference, inputs, outputs, duration, status, reruns.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <header>
+            <h3>Artifacts &amp; Distribution</h3>
+            <p class="tag">Outputs &amp; publishing</p>
+          </header>
+          <ul class="field-list">
+            <li>Artifact ID, Type, Format, Storage Link, Version, Approval</li>
+            <li>Distribution covers channel, post URL, schedule, performance metrics.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <header>
+            <h3>Prompts &amp; Timesheets</h3>
+            <p class="tag">Governance &amp; time tracking</p>
+          </header>
+          <ul class="field-list">
+            <li>Prompt metadata: purpose, template, inputs schema, model, owner, version.</li>
+            <li>Timesheet entries: person, run/task link, start/end, minutes, notes.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel" id="checklists">
+      <div class="section-heading">
+        <p class="eyebrow">Operational checklists</p>
+        <h2>Standard operating procedures to move from capture to publish.</h2>
+        <p class="description">Each checklist is versioned, time-bound, and tied back to prompts so your VA or agent knows exactly what “done” means.</p>
+      </div>
+      <div class="cards-grid two-col stretch">
+        <article class="card">
+          <header class="card-header">
+            <h3>Meeting → Insight Brief</h3>
+            <p>Otter to executive summary in 7 precise steps.</p>
+          </header>
+          <ol class="step-list">
+            <li>Ingest transcript via Zapier webhook and log highlights in <em>Inputs</em>.</li>
+            <li>Run the <strong>MEETING_STRUCTURER</strong> prompt to convert notes into agenda, decisions, owners, risks.</li>
+            <li>Generate a 200–300 word executive brief with <strong>EXEC_SUMMARY</strong> into Google Docs.</li>
+            <li>Push action items into Airtable tasks with owners and due dates.</li>
+            <li>Create a LinkedIn-ready distribution summary via <strong>OpenAI</strong>.</li>
+            <li>Quality pass through Hemingway &amp; Grammarly to confirm readability ≤ Grade 7.</li>
+            <li>Mark the run complete; automation stamps duration and completion metrics.</li>
+          </ol>
+        </article>
+        <article class="card">
+          <header class="card-header">
+            <h3>Blog Refinement &amp; SEO</h3>
+            <p>Transform a draft into a publish-ready article with search coverage.</p>
+          </header>
+          <ol class="step-list">
+            <li>Capture draft intake in <em>Inputs</em>.</li>
+            <li>Outline sections and estimated word counts.</li>
+            <li>Produce an <strong>SEO_BRIEF</strong> with keywords, SERP gaps, and questions.</li>
+            <li>Draft V1 via <strong>BLOG_DRAFTER</strong> including TL;DR, headings, and CTAs.</li>
+            <li>Create visuals with DALL·E or Midjourney and log artifacts.</li>
+            <li>Polish readability to Grade 6–8 and finalize metadata.</li>
+            <li>Publish to blog/Medium/Substack, cross-post to LinkedIn, and record distribution metrics.</li>
+            <li>Run a retrospective noting minutes, blockers, improvements.</li>
+          </ol>
+        </article>
+      </div>
+      <div class="callout">
+        <p>Explore the extended checklist library for social distribution, research-to-PRD, and image pack generation at <a href="checklists.html">checklists.html</a>.</p>
+      </div>
+    </section>
+
+    <section class="panel panel-muted" id="dashboard">
+      <div class="section-heading">
+        <p class="eyebrow">Dashboard design</p>
+        <h2>High-signal interface to manage runs, outputs, and publishing cadence.</h2>
+        <p class="description">The dashboard surfaces throughput, time load, and quality indicators with zero clutter. Build first in Airtable Interfaces, then extend into a custom web app.</p>
+      </div>
+      <div class="cards-grid three-col stretch">
+        <article class="card kpi-card">
+          <h3>Header KPIs</h3>
+          <ul>
+            <li>Runs in progress or due today.</li>
+            <li>Average minutes per checklist (7-day &amp; 30-day).</li>
+            <li>Output velocity (artifacts per week) and publish rate.</li>
+            <li>Quality flags for readability and approvals.</li>
+          </ul>
+        </article>
+        <article class="card kpi-card">
+          <h3>Operational views</h3>
+          <ul>
+            <li>Pipeline board grouped by checklist: New → In Progress → Review → Done.</li>
+            <li>Run detail panel with steps, timestamps, artifacts, blockers, SLA countdown.</li>
+            <li>Publishing calendar showing scheduled posts with channel icons.</li>
+            <li>SEO panel highlighting last 10 posts, keyword targets, SERP rank placeholder, impressions.</li>
+          </ul>
+        </article>
+        <article class="card kpi-card">
+          <h3>Time &amp; metrics</h3>
+          <ul>
+            <li>Timesheet heatmap by person and project.</li>
+            <li>Total minutes logged today and this week.</li>
+            <li>Checklist efficiency formula: Total Minutes ÷ Completed Steps.</li>
+            <li>Publish rate: Published ÷ Scheduled.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel" id="prompts">
+      <div class="section-heading">
+        <p class="eyebrow">Prompt library</p>
+        <h2>Reusable instructions keep outputs consistent and auditable.</h2>
+        <p class="description">Version each prompt, attach it to run steps, and log the model + parameters used. Highlights from the core library:</p>
+      </div>
+      <div class="prompt-grid">
+        <article class="prompt-card">
+          <h3>MEETING_STRUCTURER</h3>
+          <p>Extract purpose, agenda, decisions, owners, deadlines, risks from transcripts in JSON.</p>
+        </article>
+        <article class="prompt-card">
+          <h3>EXEC_SUMMARY</h3>
+          <p>200–300 word executive brief with context, key decisions, risks, and next steps.</p>
+        </article>
+        <article class="prompt-card">
+          <h3>SEO_BRIEF</h3>
+          <p>Keyword plan, SERP gap analysis, questions to answer, competitor review, titles, and meta descriptions.</p>
+        </article>
+        <article class="prompt-card">
+          <h3>BLOG_DRAFTER</h3>
+          <p>1,200–1,800 word post referencing the SEO brief with TL;DR, CTAs, and image placeholders.</p>
+        </article>
+        <article class="prompt-card">
+          <h3>SOCIAL_SNIPPETS</h3>
+          <p>Multi-channel social copy package: LinkedIn, X thread, newsletter blurb.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel panel-muted" id="governance">
+      <div class="section-heading">
+        <p class="eyebrow">Security &amp; governance</p>
+        <h2>Protect sensitive data while keeping automations flexible.</h2>
+      </div>
+      <div class="cards-grid two-col">
+        <article class="card">
+          <ul>
+            <li>Store API keys in Opal or a secrets manager, never directly in Airtable.</li>
+            <li>Mask PII in transcripts before sending to external models; maintain an allowlist.</li>
+            <li>Version prompts and attach Prompt ID + version to each artifact.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <ul>
+            <li>Require human-in-the-loop approvals before distribution.</li>
+            <li>Log errors: failed steps flag the run as blocked and notify the assignee.</li>
+            <li>Retain audit trails via run logs, artifacts history, and publishing records.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel" id="next-steps">
+      <div class="section-heading">
+        <p class="eyebrow">Immediate next steps</p>
+        <h2>Spin up the operating system and pilot in under two weeks.</h2>
+        <p class="description">Prioritize the build in the order below to see value fast and gather feedback from your VA.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <p class="timeline-step">01</p>
+          <div>
+            <h3>Stand up the Airtable base</h3>
+            <p>Create Inputs, Checklists, Runs, Run Steps, and Artifacts tables with the fields outlined above.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-step">02</p>
+          <div>
+            <h3>Create checklist HTML pages</h3>
+            <p>Use the template to publish Meeting → Insight Brief, Blog Refinement &amp; SEO, and other SOPs.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-step">03</p>
+          <div>
+            <h3>Wire automations</h3>
+            <p>Zapier connects Otter to Inputs, triggers Opal jobs, and syncs approved artifacts to Docs and Distribution.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-step">04</p>
+          <div>
+            <h3>Implement prompts</h3>
+            <p>Deploy core prompts (MEETING_STRUCTURER, EXEC_SUMMARY, SEO_BRIEF, BLOG_DRAFTER, SOCIAL_SNIPPETS) with version control.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-step">05</p>
+          <div>
+            <h3>Launch the dashboard</h3>
+            <p>Start with Airtable Interfaces for KPIs, pipeline, and publishing calendar; extend with a custom web app.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-step">06</p>
+          <div>
+            <h3>Pilot &amp; iterate</h3>
+            <p>Run the Meeting → Insight Brief checklist for a week, measure minutes and output quality, then layer on Hemingway enforcement.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <p>AI VA Dashboard • Built for clarity, accountability, and publishing momentum.</p>
   </footer>
+  <script>
+    const navToggle = document.querySelector('.nav-toggle');
+    const menu = document.querySelector('#primary-menu');
+    if (navToggle) {
+      navToggle.addEventListener('click', () => {
+        const expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
+        navToggle.setAttribute('aria-expanded', !expanded);
+        menu.classList.toggle('open');
+      });
+    }
+  </script>
 </body>
 </html>
